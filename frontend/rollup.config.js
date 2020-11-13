@@ -5,6 +5,7 @@ import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
+import scss from 'rollup-plugin-scss';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -59,6 +60,7 @@ export default {
 			dedupe: ['svelte']
 		}),
 		commonjs(),
+		scss(),
 		typescript({
 			sourceMap: !production,
 			inlineSources: !production
