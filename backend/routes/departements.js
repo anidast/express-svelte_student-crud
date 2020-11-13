@@ -1,40 +1,40 @@
 const router = require('express').Router();
-let Departement = require('../models/departement');
+let Major = require('../models/major');
 
 router.route('/').get((req, res) => {
-  Departement.find()
-    .then(departements => res.json(departements))
+  Major.find()
+    .then(majors => res.json(majors))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
 router.route('/add').post((req, res) => {
   const name = req.body.name;
 
-  const newDepartement = new Departement({name});
+  const newMajor = new Major({name});
 
-  newDepartement.save()
-    .then(() => res.json('Departement added!'))
+  newMajor.save()
+    .then(() => res.json('Major added!'))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
 router.route('/:id').get((req, res) => {
-  Departement.findById(req.params.id)
-    .then(departement => res.json(departement))
+  Major.findById(req.params.id)
+    .then(major => res.json(major))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
 router.route('/:id').delete((req, res) => {
-  Departement.findByIdAndDelete(req.params.id)
-    .then(() => res.json('Departement deleted.'))
+  Major.findByIdAndDelete(req.params.id)
+    .then(() => res.json('Major deleted.'))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 router.route('/update/:id').post((req, res) => {
-  Departement.findById(req.params.id)
-    .then(departement => {
-      departement.name = req.body.name;
+  Major.findById(req.params.id)
+    .then(major => {
+      major.name = req.body.name;
 
-      departement.save()
-        .then(() => res.json('Departement updated!'))
+      major.save()
+        .then(() => res.json('Major updated!'))
         .catch(err => res.status(400).json('Error: ' + err));
     })
     .catch(err => res.status(400).json('Error: ' + err));
