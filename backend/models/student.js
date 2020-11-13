@@ -12,7 +12,7 @@ const studentSchema = new Schema({
       required: true,
       unique: true
   },
-  departement: {
+  major: {
     type: String,
     required: true
   },

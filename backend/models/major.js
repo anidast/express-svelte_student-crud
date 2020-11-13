@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const departementSchema = new Schema({
+const majorSchema = new Schema({
   name: {
     type: String,
     unique: true,
@@ -12,6 +12,6 @@ const departementSchema = new Schema({
   timestamps: true,
 });
 
-const Departement = mongoose.model('Departement', departementSchema);
+const Major = mongoose.model('Major', majorSchema);
 
-module.exports = Departement;
+module.exports = Major;
