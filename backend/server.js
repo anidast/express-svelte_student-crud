@@ -21,7 +21,7 @@ connection.once('open', () => {
 const departementsRouter = require('./routes/departements');
 const studentsRouter = require('./routes/students');
 
-app.use('/departements', departementsRouter);
+app.use('/majors', departementsRouter);
 app.use('/students', studentsRouter);
 
 app.listen(port, () => {
