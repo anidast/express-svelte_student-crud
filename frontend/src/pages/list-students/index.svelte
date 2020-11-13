@@ -19,5 +19,5 @@
 <main>
     <Navbar />
     <TableStudents students={students}/>
-    <a class="button is-link m-5">Add New Student</a>
+    <button class="button is-link m-5">Add New Student</button>
 </main>

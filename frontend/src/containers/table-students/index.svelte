@@ -24,8 +24,8 @@
               <td>{student.major}</td>
               <td>{student.address}</td>
               <td>
-                  <a class="button is-success">Edit</a>
-                  <a class="button is-danger">Delete</a>
+                  <button class="button is-success">Edit</button>
+                  <button class="button is-danger">Delete</button>
               </td>
           </tr>
         {/each}
