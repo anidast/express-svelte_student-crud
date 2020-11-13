@@ -10,10 +10,10 @@ router.route('/').get((req, res) => {
 router.route('/add').post((req, res) => {
   const name = req.body.name;
   const nrp = req.body.nrp;
-  const departement = req.body.departement;
+  const major = req.body.major;
   const address = req.body.address;
 
-  const newStudent = new Student({name, nrp, departement, address});
+  const newStudent = new Student({name, nrp, major, address});
 
   newStudent.save()
     .then(() => res.json('Student added!'))
@@ -36,7 +36,7 @@ router.route('/update/:id').post((req, res) => {
     .then(student => {
       student.name = req.body.name;
       student.nrp = req.body.nrp;
-      student.departement = req.body.departement;
+      student.major = req.body.major;
       student.address = req.body.address;
 
       student.save()
