@@ -1,7 +1,6 @@
 <script lang="ts">
   import './index.scss';
-  import {Navbar} from '../../containers';
-  import {TableStudents} from '../../containers';
+  import {Navbar, TableStudents} from '../../containers';
   import type { Student } from '../../types/student.type';
   import axios from 'axios';
 
