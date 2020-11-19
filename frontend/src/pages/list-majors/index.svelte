@@ -1,21 +1,19 @@
 <script lang="ts">
   import "./index.scss";
   import { Navbar, TableMajors } from "../../containers";
-  import type { Major } from "../../types/major.type";
-  import axios from "axios";
+  import { majorsList } from '../../stores';
+  import { Link } from "svelte-routing";
 
-  var majors: Major[];
-
-  axios
-    .get("http://localhost:4000/majors/")
-    .then((response) => {
-      majors = response.data;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  const getmajors = (async () => {
+      const response = await fetch('http://localhost:4000/majors/', {
+        method: "GET"
+      });
+      let responseJson = await response.json();
+      $majorsList = await responseJson;
+      console.log($majorsList);
+    })();
 </script>
 
 <Navbar />
-<TableMajors {majors} />
-<button class="button is-link m-5">Add New Major</button>
+<TableMajors />
+<Link to="add-major" ><button class="button is-link m-5">Add New Major</button></Link>

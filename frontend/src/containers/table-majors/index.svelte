@@ -1,8 +1,20 @@
 <script lang="ts">
     import './index.scss';
     import type { Major } from '../../types/major.type';
+    import { majorsList } from '../../stores';
+    import { Link } from 'svelte-routing';
+    import axios from 'axios';
 
-    export let majors: Major[] = [];
+    function deleteMajor(id: String){
+      axios.delete('http://localhost:4000/majors/' + id)
+      .then(response => {
+        console.log(response.data);
+        window.location.href = 'majors';
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+    }
 </script>
 
 <section class="overflow container">
@@ -15,13 +27,13 @@
           </tr>
         </thead>
         <tbody>
-        {#each majors as major, i}
+        {#each $majorsList as major, i}
           <tr>
               <td>{i+1}</td>
               <td>{major.name}</td>
               <td>
-                  <button class="button is-success">Edit</button>
-                  <button class="button is-danger">Delete</button>
+                  <Link to={'edit-major/' + major._id} ><button class="button is-success">Edit</button></Link>
+                  <button class="button is-danger" on:click={() => deleteMajor(major._id)}>Delete</button>
               </td>
           </tr>
         {/each}
