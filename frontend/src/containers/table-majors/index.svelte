@@ -1,7 +1,6 @@
 <script lang="ts">
     import './index.scss';
-    import type { Major } from '../../types/major.type';
-    import { majorsList } from '../../stores';
+    import { majorsList, modalSuccessStatus, modalFailedStatus, modalText } from '../../stores';
     import { Link } from 'svelte-routing';
     import axios from 'axios';
 
@@ -9,10 +8,13 @@
       axios.delete('http://localhost:4000/majors/' + id)
       .then(response => {
         console.log(response.data);
-        window.location.href = 'majors';
+        $modalText = response.data;
+        $modalSuccessStatus = true;
       })
       .catch((error) => {
         console.log(error);
+        $modalText = error;
+        $modalFailedStatus = true;
       })
     }
 </script>

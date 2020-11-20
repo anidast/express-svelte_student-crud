@@ -1,6 +1,7 @@
 <script lang="ts">
     import './index.scss';
     import type { Major } from '../../types/major.type';
+    import { modalSuccessStatus, modalFailedStatus, modalText } from "../../stores";
     import axios from 'axios';
 
     export let major: Major;
@@ -11,20 +12,26 @@
             axios.post('http://localhost:4000/majors/add', major)
             .then(response => {
                 console.log(response.data);
-                window.location.href = 'majors';
+                $modalText = response.data;
+                $modalSuccessStatus = true;
             })
             .catch((error) => {
                 console.log(error);
+                $modalText = error;
+                $modalFailedStatus = true;
             })
         }
         else{
             axios.post('http://localhost:4000/majors/update/' + major._id, major)
             .then(response => {
                 console.log(response.data);
-                window.location.href = 'http://localhost:5000/majors';
+                $modalText = response.data;
+                $modalSuccessStatus = true;
             })
             .catch((error) => {
                 console.log(error);
+                $modalText = error;
+                $modalFailedStatus = true;
             })
         }
     }

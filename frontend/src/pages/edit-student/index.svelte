@@ -1,6 +1,6 @@
 <script lang="ts">
   import "./index.scss";
-  import { Navbar, FormStudent } from "../../containers";
+  import { Navbar, FormStudent, ModalSuccess, ModalFailed } from "../../containers";
   import type { Student } from "../../types/student.type";
   import { studentsList } from "../../stores";
 
@@ -17,3 +17,5 @@
   Edit Student
 </p>
 <FormStudent {student} updateStatus={true} />
+<ModalSuccess link="/"/>
+<ModalFailed />

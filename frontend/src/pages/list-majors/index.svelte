@@ -1,6 +1,6 @@
 <script lang="ts">
   import "./index.scss";
-  import { Navbar, TableMajors } from "../../containers";
+  import { Navbar, TableMajors, ModalSuccess, ModalFailed } from "../../containers";
   import { majorsList } from '../../stores';
   import { Link } from "svelte-routing";
 
@@ -17,3 +17,5 @@
 <Navbar />
 <TableMajors />
 <Link to="add-major" ><button class="button is-link m-5">Add New Major</button></Link>
+<ModalSuccess link="majors"/>
+<ModalFailed />

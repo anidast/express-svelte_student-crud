@@ -1,6 +1,6 @@
 <script lang="ts">
     import "./index.scss";
-    import { Navbar, FormMajor } from "../../containers";
+    import { Navbar, FormMajor, ModalSuccess, ModalFailed } from "../../containers";
     import { majorsList } from "../../stores";
     import type { Major } from "../../types/major.type";
   
@@ -17,4 +17,6 @@
     Edit Major
   </p>
   <FormMajor {major} updateStatus={true} />
+  <ModalSuccess link="http://localhost:5000/majors"/>
+  <ModalFailed />
   
